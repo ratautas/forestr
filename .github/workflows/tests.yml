@@ -26,7 +26,7 @@ jobs:
       - run: yarn
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-      - run: yarn test:${{ matrix.package }} --if-present
+      - run: yarn test:${{ matrix.package }}
 
   e2e:
     strategy:
@@ -46,8 +46,8 @@ jobs:
 
         # I ran into problems trying to run an electron window in ubuntu due to a missing graphics server.
         # That's why this special command for Ubuntu is here
-      - run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test:e2e --if-present
+      - run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test:e2e
         if: matrix.os == 'ubuntu-latest'
 
-      - run: yarn test:e2e --if-present
+      - run: yarn test:e2e
         if: matrix.os != 'ubuntu-latest'
