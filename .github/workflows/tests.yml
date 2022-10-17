@@ -22,11 +22,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
-      - run: npm ci
+          cache: 'yarn'
+      - run: yarn
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-      - run: npm run test:${{ matrix.package }} --if-present
+      - run: yarn test:${{ matrix.package }} --if-present
 
   e2e:
     strategy:

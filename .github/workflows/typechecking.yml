@@ -20,8 +20,8 @@ jobs:
           node-version: 16 # Need for npm >=7.7
           cache: 'npm'
 
-      - run: npm ci
+      - run: yarn
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - run: npm run typecheck --if-present
+      - run: yarn typecheck --if-present
